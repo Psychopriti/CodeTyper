@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    👨‍💻CodeTyper: Login
+{% endblock %}
+
+{% block main %}
+<nav class="navbar">
+    <div class="navbar-left">
+        <a class="navbar-brand" href="/login">
+            <img src="/static/logo.png" alt="Logo" class="logo-image">
+        </a>
+    </div>
+</nav>
+    <h1>Inicia Sesion</h1>
+    <div class="container">
+        <form action="/login" method="post" class="login-form">
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" id="username" name="username" placeholder="Username" type="text">
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="password" name="password" placeholder="Password" type="password">
+            </div>
+            <button class="btn" type="submit">Inicia Sesion</button>
+        </form>
+        <h3>No tienes una cuenta aun?</h3>
+        <a href="/register">Registrate!</a>
+    </div>
+{% endblock %}
+
+
+

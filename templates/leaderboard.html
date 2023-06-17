@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+    👨‍💻CodeTyper: Leaderboard
+{% endblock %}
+
+{% block main %}
+
+<form action="/leaderboard" method="post" class="code-form">
+    <div class="select-container">
+        <select class="language-select" name="lenguaje" id = "selection">
+            <option value="None" selected disabled hidden>Selecciona una opción</option>
+            <option value="python" name="lenguaje">Python</option>
+            <option value="sql" name="lenguaje">SQL</option>
+            <option value="javascript" name="lenguaje">Javascript</option>
+            <option value="c" name="lenguaje">C</option>
+            <option value="machine code" name="lenguaje">Machine Code</option>
+
+        </select>
+    </div>
+    <button class="btn" type="submit">Filtrar</button>
+
+    <h1>Mejores Tiempos</h1>
+    <nav class="navbar">
+        <div class="navbar-left">
+            <a class="navbar-brand" href="/pregame">
+                <img src="/static/logo.png" alt="Logo" class="logo-image">
+            </a>
+        </div>
+        <div class="navbar-right">
+            <a class="navbar-option" href="/pregame">🎮Juega!</a>
+            <a class="navbar-option" href="/leaderboard">🏆Top Jugadores</a>
+            <a class="navbar-option" href="/profile">🧍Perfil </a>
+            <a class="navbar-option" href="/color">🎨Personaliza Color </a>
+            <a class="navbar-option" href="/logout">👋Cerrar Sesion</a>
+        </div>
+    </nav>
+
+
+
+    <table class = "">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Lenguaje</th>
+                <th>Puntos </th>
+                <th>WPM</th>
+                <th>CPM</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {%for i in top%}
+                <td>{{i.name}}</td>
+                <td>{{i.language.capitalize()}}</td>
+                <td>{{i.points}}</td>
+                <td>{{i.wpm}}</td>
+                <td>{{i.cpm}}</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="/static/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/codetypericon.ico">
+   {% block js %}{% endblock %}
+
+   <script>
+// Código JavaScript para aplicar el degradado de fondo desde las cookies
+window.addEventListener('DOMContentLoaded', (event) => {
+    // Obtener los valores de los colores almacenados en las cookies
+    var color1 = getCookie('color1');
+    var color2 = getCookie('color2');
+
+    // Si se encontraron los colores en las cookies, se aplica el degradado de fondo en la página
+    if (color1 && color2) {
+        document.body.style.background = 'linear-gradient(' + color1 + ', ' + color2 + ')';
+    }
+});
+
+// Función para obtener el valor de una cookie por su nombre
+function getCookie(name) {
+    var cookieArr = document.cookie.split(';');
+
+    // Recorrer las cookies y buscar la que coincide con el nombre proporcionado
+    for (var i = 0; i < cookieArr.length; i++) {
+        var cookiePair = cookieArr[i].split('=');
+        if (name === cookiePair[0].trim()) {
+            return decodeURIComponent(cookiePair[1]);
+        }
+    }
+
+    return null;
+}
+
+// Código JavaScript para manejar la funcionalidad de "Cerrar sesión"
+window.addEventListener('DOMContentLoaded', (event) => {
+    var logoutButton = document.querySelector('.navbar-option[href="/logout"]');
+
+    logoutButton.addEventListener('click', function() {
+        // Restablecer el degradado de fondo a azul y negro
+        document.body.style.background = 'linear-gradient(#000000, #0000ff)';
+
+        // Borrar los colores almacenados de las cookies
+        document.cookie = 'color1=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        document.cookie = 'color2=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    });
+});
+
+
+    </script>
+
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+
+<body >
+    <main>
+        {% block main %}{% endblock %}
+    </main>
+
+    <script>
+        function setGradient() {
+            // Obtener el valor del color 1 del input
+            var color1 = document.querySelector('input[name="color1"]').value;
+
+            // Obtener el valor del color 2 del input
+            var color2 = document.querySelector('input[name="color2"]').value;
+
+            // Guardar los colores en las cookies
+            document.cookie = 'color1=' + encodeURIComponent(color1);
+            document.cookie = 'color2=' + encodeURIComponent(color2);
+
+            // Actualizar el degradado de fondo en la página
+            document.body.style.background = 'linear-gradient(' + color1 + ', ' + color2 + ')';
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+    👨‍💻CodeTyper: Profile
+{% endblock %}
+
+{% block main %}
+<h1>Estadisticas Personales</h1>
+<h1>{{user}}</h1>
+<br>
+<nav class="navbar">
+    <div class="navbar-left">
+        <a class="navbar-brand" href="/pregame">
+            <img src="/static/logo.png" alt="Logo" class="logo-image">
+        </a>
+    </div>
+    <div class="navbar-right">
+        <a class="navbar-option" href="/pregame">🎮Juega!</a>
+        <a class="navbar-option" href="/leaderboard">🏆Top Jugadores</a>
+        <a class="navbar-option" href="/profile">🧍Perfil </a>
+        <a class="navbar-option" href="/color">🎨Personaliza Color </a>
+        <a class="navbar-option" href="/logout">👋Cerrar Sesion</a>
+    </div>
+</nav>
+
+<table class = "">
+    <thead>
+        <tr>
+            <th>Juegos Jugados</th>
+            <th>Promedio WPM</th>
+            <th>Promedio Puntos</th>
+            <th>Lenguaje Favorito</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{juegos}}</td>
+            <td>{{average}}</td>
+            <td>{{average_points}}</td>
+            <td>{{lenguaje_fav.capitalize()}}</td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<br>
+<h1> Ultimos Cinco Juegos</h1>
+<table class = "">
+    <thead>
+        <tr>
+            <th>Lenguaje</th>
+            <th>Tiempo/WPM</th>
+            <th>Puntos</th>
+            <th>Errores</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            {%for i in lastgames%}
+            <td>{{i.language.capitalize()}}</td>
+            <td>{{i.wpm}}</td>
+            <td>{{i.points}}</td>
+            <td>{{i.mistakes}}</td>
+            <td>{{i.date}}</td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+{% endblock %}

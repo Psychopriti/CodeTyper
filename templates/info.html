@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    👨‍💻CodeTyper: Feria CS50
+{% endblock %}
+
+{% block main %}
+<nav class="navbar">
+    <div class="navbar-left">
+        <a class="navbar-brand" href="/pregame">
+            <img src="/static/logo.png" alt="Logo" class="logo-image">
+        </a>
+    </div>
+    <div class="navbar-right">
+        <a class="navbar-option" href="/pregame">🎮Juega!</a>
+        <a class="navbar-option" href="/leaderboard">🏆Top Jugadores</a>
+        <a class="navbar-option" href="/profile">🧍Perfil </a>
+        <a class="navbar-option" href="/color">🎨Personaliza Color </a>
+        <a class="navbar-option" href="/logout">👋Cerrar Sesion</a>
+    </div>
+</nav>
+
+<img src="/static/cs50.jpg" alt=""width="215px" height="110px">
+<h1>Torneo de CodeTyper🏆</h1>
+<br>
+<p id="cs50">
+    Puedes participar en las categorias de C, Python, SQL y Javascript
+    <br>
+    <br>
+    Los 3 mejores de cada categoria recibiran un premio
+    <br>
+    <br>
+    Unete a nuestro grupo de whatsapp con el QR donde se anunciaran los ganadores
+    <br>
+    <br>
+    Suerte!
+
+{% endblock %}

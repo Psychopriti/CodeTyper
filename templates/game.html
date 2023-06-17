@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+
+{% block js %}
+<script>
+    window.userLanguage =  "{{ user_selection }}"
+</script>
+<script src="/static/lol.js" defer></script>
+
+{% endblock %}
+
+{% block title %}
+    👨‍💻CodeTyper: Game
+{% endblock %}
+
+{% block main %}
+
+
+<nav class="navbar">
+    <div class="navbar-left">
+        <a class="navbar-brand" href="/pregame">
+            <img src="/static/logo.png" alt="Logo" class="logo-image">
+        </a>
+    </div>
+    <div class="navbar-right">
+        <a class="navbar-option" href="/pregame">🎮Cambiar Lenguaje</a>
+        <a class="navbar-option" href="/leaderboard">🏆Top Jugadores</a>
+        <a class="navbar-option" href="/profile">🧍Perfil </a>
+        <a class="navbar-option" href="/color">🎨Personaliza Color </a>
+        <a class="navbar-option" href="/logout">👋Cerrar Sesion</a>
+    </div>
+</nav>
+
+
+{% if lenguaje == "Python" %}
+    <img src="https://cdn3.emoji.gg/emojis/1887_python.png" width="64px" height="64px" alt="python">
+{% elif lenguaje == "C" %}
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFXElEQVR4nO2ZfUwTZxzHz5ltyZIt25Jlf+yf/YHpoZI4etcXJAKC0BYprzdaSsHJ65huE5OZbEai2ZzJYpS7qhScEXUZa6WtHaswWnAzmeB0EDcWdVZI3PBlE0StYKn9LU83Xyj2ri8H9A++yS95crm75/N97vf7PU9yGDaveUWfslT21zPV1h9UlY4Hqiq7R6G2OGSU4TUs2kVRsFD2tllXWGn3FL93Ap4MVWWnR15oPryYMjyHRaMUqtb1BWs7XP7g/lFQ1j4uo8ybsGhROtUqyym1DXOB+0dOie1mep45Zw7BDTGrNdYzmhDBnwxNTTcotW0XM/KNS2YNXKaxvbRabW1VV9u94YL7R1F1lzez6FhnUrb55RlEhwUKlWUbVfm9my/wYr8orOiczCyy6Ovq4Ble0Vflm0rz3mkf4wLYvOMMmG1D8PvFUfjrmgsm7nt8gcbomsk25LuH6z35a9vvygpaayIGT1NbE7NLvnOyTaZddwLo/QNw9fo9CFbD11y+Z7Tr2I3klh6/Jis0pocMTlHtr2ZprD2oyNgmqK3rhUuDYxCu/rg8Bhu29HAWOmJRKi0vBm0gp8Q2xPWZt+3sg7HbbohUd+66YXt9P+tcCrUVRKu+Oh+0gaKaLtYXfra7HyY9XuBLkx4vfLqrb3oKrWkHqawFpHIjSGUGCNoAG/yHW3rg9p3IV/5pX6K2rtc3h6rKASuyDCCRGf6D9xkwRm4AFV0kOc+lC84xSMs3gTjjm8fgfBpAnYNLqC6M1svwyednoGzDSV+gsfHbQdYvN3D+JlTUdk0H58sAWn3U/tjU+8sNKN94MmD6VWw8Caf7bkx55vrf92DrF6chQREAnC8DaAPigufq6w8XApkYn/DA/iMDkJxtYgfnywDaYdnShm3l/fu6QnUMlMVtwYHzZQAdBQIJ5Xww8KifizP+b4uhhixCA2xHhY+3s59v8tZ0PO7n4YYsQgMoZwOpvPbp6aOq6prez+fMwDiLAb/8R3kuL7TA0uUNsGzFAX4MyGcwhVCff3ifUtsG8UlNgJPMo4gV6+CtlIMglRvmzsDAhcBFfLRtEKiyDkjIODQF3D+WSPaBMPXw3BgwsbTR0VsTIFrZyAr/ZIhWfgllH9hn1wDXRtbhuASxIm74xWId2E84wesFcPx4BQrWHp8dA8EcJZAJIlkfEJ5M0UNnt3PKM5OTD8Bic4JcZZ1ZAyh27u0HLt0cuQf1DT2Qp22B+KQGECbpfWNa3wMjo+MBn7t95z7sOXAOEjKP8m9AXe2AZGULLJHooP/XqzBTOts/DIsleyA+5ZCv70duoKYbMigTxEn3PUqDVGWzb5X51uitcUjPfdzFlkobgEg7Ep6Bone7Iau4DZatmNrPH4a2ygRud+CNLVS53R7QVLQ+da645U0gSm8BSSgGyNSDZq5uUlR+FP7h4UuM3hqH0mozR/fSQVxiU1fQBoRC/bMCkt4qIGkX24vTspuh79zViHI+VdnMCo8YEEtMTP3zWKhaJNn3Bk7SepygPYEmQL3//U02cA6OBA1+aXAE1n9k41h12osTjEEg3vUmFqlwIROPk3Q3V1rlFreArrEXTv18xWfI5XL7Ao3RNaaxF3I0X3NudgKCOYWTjBTjW7EEnSYg6N+CPTKEGgKCuSgQMRQ2k0L1gRNMJU4yN/gDp0dwktkUVp6Hq7jEva8ICHoHTjITYYOTtBvVWMyy+rn7ARgr3r0IFZuv6EKCZzpjSd3s/ZnhEi6qlwgI+qcgVv0sTtQnYdEpWICKECeYwWnwBP0nqh2MMizEol1Cof4FAUlvxknaiQKN0bW55prXvLDp+hfbmoxip87ScgAAAABJRU5ErkJggg==" width="64px" height="64px">
+{% elif lenguaje == "Javascript" %}
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAACKElEQVR4nO2WT0hVQRTGz/GZ7yEiRJJ/SsMiRaigUFwUhQgGouLChZS5Cmmj5c4kol1tRNoYLcJ0JRKUFYmUJi5EQSP/dEFxkUW4iQyUIMS+mHe5jtN7ihLeO8L54OPBmXmX+c2c+90hEolEIisFh2CTSQAcOQFIC+1GQbcM5CV2gt91SIw6we885EPm2GHarYJeMATACX7XIS3k/M+O8YZ7282xmT5CbTkjI42RGGJkHWbUVTJmX+4DgMFOQiSsx2iTkyMcHbcWYH2WkHtU18NJjILj7q9XKz7D+PPJUoCPz3U9IYEx/cKtLw4STmQzbl5jrExYfALDXbqu2uj3lJ7/64NlKRQP4MuQWa8uZXx+t9PnWQCgfPmC+eJGwozrNYz5/n0C8G2YcLYgNoFCIRdkddJyAGW1yNYGRkpyLMjpPMaPMcsBPH8fJdxvJqQfMiEar3KwACrvtwP4N+d/jlM0/7352Rk+AqgUqSphvH6kawsDJsCrDj3W/YBQeCo279tb9H+SDvgE0NNG0c+/lya36hkddwnnz5ktoe4+ar66/3i1kmLG1yG3vjxOuFSkx9TX2heAuTcaYCufPKavBg9bzZNhZhxJN68SyrcbfGyh908JqSnxF69a4e0Ts/fv3Nge+GJh/CjdMwDlpRFCUx0jJ9PNc3VNriljTD6LP3+sh3ClgpGf6+7+wVR34Y/vEdZmtkq1PQTwwyQAjpwAfG0hkUgkIj/0FxH0JVVHu8XgAAAAAElFTkSuQmCC" width="64px" height="64px">
+{% elif lenguaje == "SQL" %}
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEVklEQVR4nO2YW2hcRRjH/6naWi+9JZnZaLFVI1JvIBVvUBAKCl7Ql1SRilpxk/1mtzGtyc7sJucrolWxphcvUBWkLfogVvFBEasFS8GHCmpBfeiTKGjpleTMhmJ1ZeZsNptksyR5kBM4P/jImZkvc+Y/3zczZxZISEhISEhISJhDcG4RNH0BrQ5Cq01Ipy/CnKKQboNWg8jlFsCobmg6DE37oFUXejdcjjmBUVtQzNxdLWvVDK2ehlHfopB5CLHHpY2mDwA0oUgroLOP+vqenoXQ6m1o9ZJvizWGOqEz9/pnJ6KWAvXC0HbEGj/b9N6U7U6AVmnEGqO6YWhtgzT7DvnOlYgtHR0XwNC7U7YX1H3Q9CZiS3/X9dAZauDRBE1H/C4VSwytQ6HrzoY+0fa6BbHEqMeh6Q70ZVb5U7kezPNh6Cjy6cWIHTqzGib7DDS9CkM/+p2pHnnaAEOfQFM7YkYTtNoDTYf8CayJp/TM526Fode9WH7yYsSGfOdKP8MOk12P/o3XNfR3UTDqjThGI8IJcHlfjz66ESbbB0O7YdTnYJ4HFLK3w9Br0Co/ZQ6a7Bpo2gFN2emGr8yYV2K5LmQ5aAO5u9ZCbn3e+VhO3WZZbpvYbgPx8nC/uDnyEV2uboRb26HVNhi1F5s3X1ozOHUCRpW9OYdJqnPLoZWt8ZnW8R6y/NCyLIeBeKsUpDpqbZjlPaViakUYiHOW5VnLMjvaZgPRHbIIw0CMjBTl1WEg97t+SgMta8B8oU8fQx+D6bJRAWUYOglNP8OoIX/hGDf79Epl4D9V/hanI8AG4rh7cTmNuheWkFP3u3YbyH2T/pflO37QQapjnIDqmLpu8uPwW2s0syf8zEbP3VVHTl8CTaeg6S8Y0lUB7vJh6MCk7xj3KezrN8qQ5R/uxcNGyCki9GAkQLw/uU3s8oNm+VhdAdX3Za4ZE+By26jjMOpYtDh8dHKVCBWg1XM1Agaj+uz6cR0a9b2vL5JLj2crqfCbDeQBbyy/CgOx0xaWXdlQQCB2TktA5aWRAP9ML/pyIfOAF+HEuPyPbkwzEuCK5Vz7gmEWt9iBttXOwkBwtC7kZ40jIHfMToC/r9I5aPoSJvtINGDaFYVr5gImMtSfWuUFsDjUOAJy++wEROW9MOpfaPoVRp1HMXftJAFGvRBFinpnIsAOiIcrEdhfGhB3eQEsj5Z7li8cMqlWy/Jry+KXMBBH/PoZEGtHF7TbTqcnwB0khn6Hpn9gaGu1vlbApnQLDH0EQyE0nYFRpyt2fmwNyGOWxelaC1mUwkB+GhZa2spAk2Wx1QbilNsyfXsgbEVUOWR5uMw3zHdbqQ3EN5GPHJrYp1vJS8HdS+pIG3+pdj+DeN8JB5nbyly9+7Y36k8vXKvmM7x4yVl91dJRc+X6Mwic5GWLRv0sN19hWRwMA/l3yPKpWr+JfTrDrHC/GozN+php9QM0PTG7ThMSEhISEhIS8H/zH0+vv/NpkXfUAAAAAElFTkSuQmCC" width="64px" height="64px">
+{% elif lenguaje == "Machine Code" %}
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAACEklEQVR4nGNgGAWjYBSMgkEJzl+/fer8jTv/BwM+d/3OCdI9MAgcfh4Jk+2BdXsO/5+8bP3/dXuPYOUPeg9MXrbh/4Ql6/5PWb4BK3/Qe2Dd3iNgR6+HxQAaf9B74PwgwQwj1gNqRhYDis+PesBoNAb+jyahG6OZ2ILsZGAYYPC/7D/z/+yH3EOzFPLsUgR7IHi51ND0QMJRIbAHbHI0B68HzGL0/ieeEMQQ17Q0+1/0nfV/8Q/W/1pWZnBxkFqTMP2B94BRoMH/mN2i/8v+MYNDGV3eNlcTLB5/RAhFHCRW+pf5f+QWsf+6Lsb094Ceh9H/sLUS/0v/sIAdA8IpF/gx1IUslwLLeXQpooinXOKD6yv8xP7fq0/hv4a5Of08AEoWMAdk3uf5b1+kjlVd1iNusBojfwNUOWOL/07Vqv9zX3DCzQGppZsHkC3Vw5EEQI7G5zAQ1nEyARevMPPo5oHw9RLwdF/wgf2/W4vyf3UTVDWgZAOSByUjDDOwxEDqFT76ZmKLRJ3/Gbd5cDoAlHFB4qCMjK4XOQ/kv+H471KvAvYU3UshdVPz/x7div+LvrKhJAFcxSdKKfSbBVy5adma0r8UQscGXob/4w4IEyw+kWMHVASrDXQ9gAvjKj7JwecHwgM4i8+h4gE1KuLzox4wGo2B/6NJ6MZoJrYYuqXQ+UGCGUacB0bBKBgFo4CBHgAAnQhuo3UE/7MAAAAASUVORK5CYII=" width="64px" height="64px">
+{% endif %}
+
+
+  <div class="wrapper">
+    <input type="text" class="input-field">
+    <div class="content-box">
+        <div class="typing-text">
+            <p id="paragraph"></p>
+        </div>
+
+        <div class="content">
+            <ul class="result-details">
+                <li class="time">
+                    <p>
+                        Tiempo restante:
+                    </p>
+                    <span><b>60</b>s</span>
+                </li>
+                <li class="mistake">
+                    <p>
+                        Errores:
+                    </p>
+                    <span>0</span>
+                </li>
+                <li class="wpm">
+                    <p>
+                        WPM:
+                    </p>
+                    <span>0</span>
+                </li>
+                <li class="cpm">
+                    <p>
+                        CPM:
+                    </p>
+                    <span>0</span>
+                </li>
+                <li class="points">
+                    <p>
+                        Puntos:
+                    </p>
+                    <span>0</span>
+                </li>
+
+            </ul>
+            <button id = "rbtn" >Reiniciar</button>
+
+
+            <div style="margin-left: auto; margin-right: auto; width: 150px;">
+                <button class = "btn" id="endGameBtn" onclick="endGame()">Fin del juego </button>
+            </div>
+
+        </div>
+    </div>
+
+    <audio src= {{user_song}} autoplay loop preload="none" id = "myAudio"> </audio>
+</div>
+<input type="submit" class="btn" value="Musica Off🔇" onclick="stopAudio()" id = "off">
+<input type="submit" class="btn" value="Musica On🔊" onclick="playAudio()" id = "on">
+
+{% endblock %}
+

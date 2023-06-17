@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    👨‍💻CodeTyper: Register
+{% endblock %}
+
+{% block main %}
+<nav class="navbar">
+    <div class="navbar-left">
+        <a class="navbar-brand" href="/register">
+            <img src="/static/logo.png" alt="Logo" class="logo-image">
+        </a>
+    </div>
+</nav>
+    <h1>Registrate</h1>
+    <form action="/register" method="post" class="container">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" id="username" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" class="form-control" id="password" name="password" placeholder="Password" type="Password">
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" class="form-control" id="password-con" name="confirmation" placeholder="Confirm Password" type="password">
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" class="form-control" id="email" name="email" placeholder="Email" type="email">
+        </div>
+        <button class="btn" type="submit">Registrar</button>
+    </form>
+
+{% endblock %}

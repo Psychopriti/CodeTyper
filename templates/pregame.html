@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block js %}
+    <script src="/static/lol.js"></script>
+
+    <style>
+        body {
+          background: linear-gradient(#000000, #0000ff);
+        }
+      </style>
+
+
+{% endblock %}
+
+{% block title %}
+    👨‍💻CodeTyper: Game
+{% endblock %}
+
+
+{% block main %}
+<nav class="navbar">
+    <div class="navbar-left">
+        <a class="navbar-brand" href="/pregame">
+            <img src="/static/logo.png" alt="Logo" class="logo-image">
+        </a>
+    </div>
+    <div class="navbar-right">
+        <a class="navbar-option" href="/pregame">🎮Juega!</a>
+        <a class="navbar-option" href="/leaderboard">🏆Top Jugadores</a>
+        <a class="navbar-option" href="/profile">🧍Perfil </a>
+        <a class="navbar-option" href="/color">🎨Personaliza Color </a>
+        <a class="navbar-option" href="/logout">👋Cerrar Sesion</a>
+    </div>
+</nav>
+    <h1>Hola {{user}}, listo para codear?</h1>
+    <br>
+    <h3>Elige un lenguaje de programacion para empezar</h3>
+
+    <form action="/pregame" method="post" class="code-form">
+        <div class="select-container">
+            <select class="language-select" name="lenguaje" id = "selection">
+                <option value="None" selected disabled hidden>Selecciona una opción</option>
+                <option value="0" name="lenguaje">Python</option>
+                <option value="1" name="lenguaje">SQL</option>
+                <option value="2" name="lenguaje">Javascript</option>
+                <option value="3" name="lenguaje">C</option>
+                <option value="4" name="lenguaje">Machine Code</option>
+                <option value="5" name="lenguaje">Scratch</option>
+            </select>
+        </div>
+
+        <h3>Elige un genero de musica</h3>
+        <br>
+        <form action="/pregame" method="post" class="code-form">
+            <div class="select-container">
+                <select class="language-select" name="audio" id = "selection_audio">
+                    <option value="None" selected disabled hidden>Selecciona una opción</option>
+                    <option value="0" name="lenguaje">Lofi</option>
+                    <option value="1" name="lenguaje">Hardstyle</option>
+                </select>
+            </div>
+        <button class="btn" type="submit">A codear!</button>
+
+        <h1>Como jugar?</h1>
+        <br>
+        <p id = "reglas">
+            1. Elige tus colores favoritos en la pestaña de <a href="/color">cambio de color</a>
+            <br>
+            <br>
+            2. Elige el lenguaje de programacion y genero de musica que prefieras
+            <br>
+            <br>
+            3. Listo! Empieza a codear
+            <br>
+            <br>
+            Lee la info para la <a href="/info">feria de CS50</a>
+        </p>
+    </form>
+
+{% endblock %}
+
