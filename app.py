@@ -349,7 +349,11 @@ def profile():
     user_search = db.execute("""SELECT name FROM users WHERE id = :user""", user = user_id)
     user = user_search[0]["name"]
 
-    return render_template("profile.html",user=user, juegos= games_played[0]["COUNT(user_id)"],average = round(average,2), lenguaje_fav =lenguaje_fav, lastgames = last_games, average_points = round(average_points,2))
+    user_total_points = db.execute(""" SELECT SUM(points) FROM leaderboard  WHERE user_id = :user """,user = user_id)
+    totalpoints = user_total_points[0]["SUM(points)"]
+
+    return render_template("profile.html",totalpoints = round(totalpoints,2),user=user, juegos= games_played[0]["COUNT(user_id)"],average = round(average,2), lenguaje_fav =lenguaje_fav, lastgames = last_games, average_points = round(average_points,2))
+    
 
 
 
