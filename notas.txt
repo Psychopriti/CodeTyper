@@ -1,0 +1,6 @@
+function playAudio(){
+    audio.play();
+    document.getElementById('off').style.display = 'inline-block';
+    document.getElementById('on').style.display = 'none';
+
+}
